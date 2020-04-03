@@ -20,6 +20,11 @@ Route.post('users', 'UserController.store')
 Route.post('session', 'SessionController.store')
 
 Route.group(() => {
+  Route.put('users', 'UserController.update')
+  Route.delete('users', 'UserController.destroy')
+}).middleware(['auth'])
+
+Route.group(() => {
   Route.post('task', 'TaskController.store')
   Route.put('task/:id', 'TaskController.update')
   Route.delete('task/:id', 'TaskController.destroy')
