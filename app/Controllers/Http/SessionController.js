@@ -6,7 +6,11 @@ class SessionController {
       const { email, password } = request.all()
       const token = await auth.attempt(email, password)
       return response.json(token)
-    } catch (error) {}
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ error: { message: 'Error no servidor!' } })
+    }
   }
 }
 

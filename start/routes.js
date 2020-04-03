@@ -18,3 +18,9 @@ const Route = use('Route')
 
 Route.post('users', 'UserController.store')
 Route.post('session', 'SessionController.store')
+
+Route.group(() => {
+  Route.post('task', 'TaskController.store')
+  Route.put('task', 'TaskController.update')
+  Route.get('task', 'TaskController.index')
+}).middleware(['auth'])

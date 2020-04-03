@@ -7,11 +7,12 @@ class TaskSchema extends Schema {
   up() {
     this.create('tasks', (table) => {
       table.increments()
-      table.string('title').notNullable()
-      table.string('description').notNullable()
-      table.string('importance').notNullable()
+      table.string('matter').notNullable()
+      table.string('content').notNullable()
+      table.string('anotations')
+      table.string('importance')
       table.date('term').notNullable()
-      table.integer('user_id').references('id').inTable('users').unique()
+      table.integer('user_id').references('id').inTable('users').notNullable()
       table.timestamps()
     })
   }
